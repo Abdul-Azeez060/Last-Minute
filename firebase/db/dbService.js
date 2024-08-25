@@ -9,20 +9,16 @@ const addData = async (data) => {
 };
 
 const getData = async (slug) => {
+  console.log("this is getDAta");
   try {
     const querySnapshot = await db
       .collection("Data")
       .where("slug", "==", slug)
       .get();
-    if (querySnapshot.empty) {
-      return { error: "could not find the slug" };
-    } else {
-      const doc = querySnapshot.docs[0];
-      console.log({ id: doc.id, ...doc.data() });
-      return { id: doc.id, ...doc.data() };
-    }
+
+    console.log(querySnapshot);
   } catch (error) {
-    throw new Error("error occured in retriving data from db");
+    throw error;
   }
 };
 

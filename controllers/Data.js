@@ -5,6 +5,7 @@ const handleDataAdd = async (req, res) => {
     const { slug } = req.params;
     const { data } = req.body;
     const resData = await getData(slug);
+    console.log(resData, "this is the response d");
     if (!resData.error) {
       return res.json(resData);
     }
