@@ -7,7 +7,7 @@ const handleDataAdd = async (req, res) => {
     const { data } = req.body;
     const resData = await getData(slug);
     const d = { data, slug };
-    console.log(d);
+
     if (!resData.error) {
       const docRef = db.collection("Data").doc(resData.id);
       await docRef.update(d);
@@ -21,7 +21,6 @@ const handleDataAdd = async (req, res) => {
       success: "successfull",
     });
   } catch (error) {
-    console.log(error);
     res.json({
       error,
     });
@@ -40,7 +39,9 @@ const handleDataRetrive = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("error in getting the data");
+    res.json({
+      error,
+    });
   }
 };
 

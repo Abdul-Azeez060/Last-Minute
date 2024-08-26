@@ -18,7 +18,7 @@ const getData = async (slug) => {
       return { error: "could not find the slug" };
     } else {
       const doc = querySnapshot.docs[0];
-      console.log({ id: doc.id, ...doc.data() });
+
       return { id: doc.id, ...doc.data() };
     }
   } catch (error) {
